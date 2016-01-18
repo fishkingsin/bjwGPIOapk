@@ -27,18 +27,18 @@ import android.widget.ToggleButton;
 
 /**
  * @author mywork
- * ÈçÊ¾²¨Æ÷Ò»ÑùÏÔÊ¾GPIO¸ßµÍµçÆ½×´Ì¬£¬ÓÃÀ´Ñ§Ï°surfaceviewµÄÊ¹ÓÃ£»
- * ÒÔÂÖÑ¯µÄ·½Ê½²éÑ¯£¬Ö»ÊÇ×öÀ´ÍæµÄ¡£
- * °´menu¼ü¿ÉÒÔµ¯³öÉèÖÃ²Ëµ¥
- * ¿ÉÒÔÉèÖÃ³ÉÆäËüGPIO¿Ú£¬±ÈÈç210¿ª·¢°åGPJ0(4~7)ÊÇ¸ºÔğLCD¿ØÖÆµÄ£¬¿ÉÒÔ¿´µ½¸ßµÍµçÆ½±ä»¯¡£
- * 4¸ö¿ª¹Ø°´Å¥ÓÃÀ´¿ØÖÆÉèÖÃºÃµÄ4¸öIO¿Ú
+ * å¦‚ç¤ºæ³¢å™¨ä¸€æ ·æ˜¾ç¤ºGPIOé«˜ä½ç”µå¹³çŠ¶æ€ï¼Œç”¨æ¥å­¦ä¹ surfaceviewçš„ä½¿ç”¨ï¼›
+ * ä»¥è½®è¯¢çš„æ–¹å¼æŸ¥è¯¢ï¼Œåªæ˜¯åšæ¥ç©çš„ã€‚
+ * æŒ‰menué”®å¯ä»¥å¼¹å‡ºè®¾ç½®èœå•
+ * å¯ä»¥è®¾ç½®æˆå…¶å®ƒGPIOå£ï¼Œæ¯”å¦‚210å¼€å‘æ¿GPJ0(4~7)æ˜¯è´Ÿè´£LCDæ§åˆ¶çš„ï¼Œå¯ä»¥çœ‹åˆ°é«˜ä½ç”µå¹³å˜åŒ–ã€‚
+ * 4ä¸ªå¼€å…³æŒ‰é’®ç”¨æ¥æ§åˆ¶è®¾ç½®å¥½çš„4ä¸ªIOå£
  */
 public class OscilloscopeActivity extends Activity implements Callback {
-	//²Ëµ¥ºÍ¶Ô»°¿ò
+	//èœå•å’Œå¯¹è¯æ¡†
 	private static final int ITEM0 = Menu.FIRST;
 	private static final int DIALOG1 = 1;
 	
-	int screenWidth,screenHeight;//surfaceview¿í¶ÈºÍ¸ß¶È
+	int screenWidth,screenHeight;//surfaceviewå®½åº¦å’Œé«˜åº¦
 	Button btnOscBack;
 	SurfaceView surfaceViewOsc;
 	SurfaceHolder sfHolder;
@@ -46,13 +46,13 @@ public class OscilloscopeActivity extends Activity implements Callback {
 	Canvas canvas;
 	ToggleButton tBtnLed1,tBtnLed2,tBtnLed3,tBtnLed4;
 	
-	float Y1Max,Y1Min,Y2Max,Y2Min,Y3Max,Y3Min,Y4Max,Y4Min;//×î´óÖµºÍ×îĞ¡Öµy×ø±ê
-	float centerXStart[],centerXStop[],centerYStart[],centerYStop[];//ÖĞĞÄÏß×ø±ê
+	float Y1Max,Y1Min,Y2Max,Y2Min,Y3Max,Y3Min,Y4Max,Y4Min;//æœ€å¤§å€¼å’Œæœ€å°å€¼yåæ ‡
+	float centerXStart[],centerXStop[],centerYStart[],centerYStop[];//ä¸­å¿ƒçº¿åæ ‡
 	int lastX;
-	float lastY1,lastY2,lastY3,lastY4;//´æ´¢ÉÏÒ»´ÎµÄ×ø±êÖµ
-	float y1=0,y2=0,y3=0,y4=0;//µ±Ç°y×ø±êÖµ
-	Paint paintCenter;// ÖĞĞÄÏß»­±Ê
-	Paint paintLine;// 4ÌõÇúÏß»­±Ê
+	float lastY1,lastY2,lastY3,lastY4;//å­˜å‚¨ä¸Šä¸€æ¬¡çš„åæ ‡å€¼
+	float y1=0,y2=0,y3=0,y4=0;//å½“å‰yåæ ‡å€¼
+	Paint paintCenter;// ä¸­å¿ƒçº¿ç”»ç¬”
+	Paint paintLine;// 4æ¡æ›²çº¿ç”»ç¬”
 	
 	String pin_group1,pin_group2,pin_group3,pin_group4;
 	int pin_num1,pin_num2,pin_num3,pin_num4;
@@ -79,7 +79,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
         surfaceViewOsc=(SurfaceView)findViewById(R.id.surfaceViewOsc);
         sfHolder=surfaceViewOsc.getHolder();
         sfHolder.addCallback(this);
-    	//ÖĞĞÄÏß»­±Ê³õÊ¼»¯
+    	//ä¸­å¿ƒçº¿ç”»ç¬”åˆå§‹åŒ–
         paintCenter=new Paint();
         paintCenter.setColor(Color.CYAN);
 //        paintCenter.setAntiAlias(true);
@@ -87,11 +87,11 @@ public class OscilloscopeActivity extends Activity implements Callback {
         PathEffect effects = new DashPathEffect(new float[]{5,2,5,2},1);  
         paintCenter.setPathEffect(effects);
         
-        //ÇúÏß»­±Ê³õÊ¼»¯
+        //æ›²çº¿ç”»ç¬”åˆå§‹åŒ–
         paintLine=new Paint();
         paintLine.setColor(Color.GREEN);
         paintLine.setStrokeWidth(1);
-        //GPIO¶Ë¿ÚÉèÖÃ
+        //GPIOç«¯å£è®¾ç½®
         if (android.os.Build.BOARD.contains("6410")) {
         	pin_group1="GPK";
         	pin_group2="GPK";
@@ -117,7 +117,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
         mGPIOThread.start();
     }
     //--------------------------------------------------------------------
-    //°´Å¥ÊÂ¼ş
+    //æŒ‰é’®äº‹ä»¶
     class btnClickListener implements View.OnClickListener{
 		public void onClick(View v)
 		{
@@ -141,14 +141,14 @@ public class OscilloscopeActivity extends Activity implements Callback {
     }
     
     //--------------------------------------------------------------------
-    //surface³õÊ¼»¯
+    //surfaceåˆå§‹åŒ–
 	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3)
 	{	
 	}
 
 	public void surfaceCreated(SurfaceHolder arg0)
 	{
-		//³õÊ¼»¯Êı¾İ
+		//åˆå§‹åŒ–æ•°æ®
 		screenWidth=surfaceViewOsc.getWidth();
 	    screenHeight=surfaceViewOsc.getHeight();
 	    setTitle(getTitle().toString()+" Width:"+screenWidth+" Height:"+screenHeight);
@@ -196,11 +196,11 @@ public class OscilloscopeActivity extends Activity implements Callback {
 	{
 	}
 	//--------------------------------------------------------------------
-	//ÇåÆÁ²¢»­ÖĞĞÄÏß
+	//æ¸…å±å¹¶ç”»ä¸­å¿ƒçº¿
 	public void DrawCenterLine()
 	{
 		canvas = sfHolder.lockCanvas(new Rect(0, 0, screenWidth,screenHeight));
-		canvas.drawColor(Color.BLACK);// Çå³ı»­²¼
+		canvas.drawColor(Color.BLACK);// æ¸…é™¤ç”»å¸ƒ
 		canvas.drawLine(centerXStart[0], centerYStart[0], centerXStop[0], centerYStop[0], paintCenter);
 		canvas.drawLine(centerXStart[1], centerYStart[1], centerXStop[1], centerYStop[1], paintCenter);
 		canvas.drawLine(centerXStart[2], centerYStart[2], centerXStop[2], centerYStop[2], paintCenter);
@@ -208,7 +208,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
 		sfHolder.unlockCanvasAndPost(canvas);
 	}
 	//--------------------------------------------------------------------
-	//»­Ïß
+	//ç”»çº¿
 	public void Draw4Line(int pos)
 	{
 		canvas = sfHolder.lockCanvas(new Rect(0, 0,screenWidth,screenHeight));
@@ -241,9 +241,9 @@ public class OscilloscopeActivity extends Activity implements Callback {
 		sfHolder.unlockCanvasAndPost(canvas);
 	}
 	//--------------------------------------------------------------------
-    //¶ÁÈ¡GPIOÏß³Ì
+    //è¯»å–GPIOçº¿ç¨‹
     class GPIOThread extends Thread{
-    	public boolean suspendFlag = true;// ¿ØÖÆÏß³ÌµÄÖ´ĞĞ
+    	public boolean suspendFlag = true;// æ§åˆ¶çº¿ç¨‹çš„æ‰§è¡Œ
 		Canvas canvas;
     	@Override
 		public void run() {
@@ -311,21 +311,21 @@ public class OscilloscopeActivity extends Activity implements Callback {
 			}
 		}
     	
-    	//Ïß³ÌÔİÍ£
+    	//çº¿ç¨‹æš‚åœ
 		public void setSuspendFlag() {
 			this.suspendFlag = true;
 		}
 		
-		//»½ĞÑÏß³Ì
+		//å”¤é†’çº¿ç¨‹
 		public synchronized void setResume() {
 			this.suspendFlag = false;
 			notify();
 		}
     }
     //--------------------------------------------------------------------
-    //»æÍ¼Ïß³Ì
+    //ç»˜å›¾çº¿ç¨‹
     class DrawThread extends Thread{
-    	public boolean suspendFlag = true;// ¿ØÖÆÏß³ÌµÄÖ´ĞĞ
+    	public boolean suspendFlag = true;// æ§åˆ¶çº¿ç¨‹çš„æ‰§è¡Œ
 		Canvas canvas;
     	int x=0;
     	@Override
@@ -359,26 +359,26 @@ public class OscilloscopeActivity extends Activity implements Callback {
 			}
 		}
     	
-    	//Ïß³ÌÔİÍ£
+    	//çº¿ç¨‹æš‚åœ
 		public void setSuspendFlag() {
 			this.suspendFlag = true;
 		}
 		
-		//»½ĞÑÏß³Ì
+		//å”¤é†’çº¿ç¨‹
 		public synchronized void setResume() {
 			this.suspendFlag = false;
 			notify();
 		}
     }
     //--------------------------------------------------------------------
-    //ÉèÖÃ²Ëµ¥
+    //è®¾ç½®èœå•
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, ITEM0, 0, "GPIO¿ÚÉèÖÃ");
+        menu.add(0, ITEM0, 0, "GPIOå£è®¾ç½®");
         return true;
     }
     //------------------------------------------
-    //²Ëµ¥ÏìÓ¦ÊÂ¼ş
+    //èœå•å“åº”äº‹ä»¶
     public boolean onOptionsItemSelected(MenuItem item)
     {
     	switch (item.getItemId())
@@ -394,7 +394,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
     	return super.onOptionsItemSelected(item);
     }
     //------------------------------------------
-    //´´½¨¶Ô»°¿ò
+    //åˆ›å»ºå¯¹è¯æ¡†
   	@Override
   	protected Dialog onCreateDialog(int id) {
   		switch (id)
@@ -405,13 +405,13 @@ public class OscilloscopeActivity extends Activity implements Callback {
   		return null;
   	}
   	//------------------------------------------
-  	//½ÓÊÕË¢ĞÂÉèÖÃ¶Ô»°¿ò
+  	//æ¥æ”¶åˆ·æ–°è®¾ç½®å¯¹è¯æ¡†
     private Dialog buildDialog(Context context) {
 		LayoutInflater inflater = LayoutInflater.from(this);
 		final View textEntryView = inflater.inflate(
 				R.layout.alert_dialog_text_entry, null);
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle("ÇëÉèÖÃGPIO 1~4");
+		builder.setTitle("è¯·è®¾ç½®GPIO 1~4");
 		builder.setView(textEntryView);
 		final EditText editGPIOGroup1 = (EditText)textEntryView.findViewById(R.id.editTextIO_Group1);
 		final EditText editGPIOGroup2 = (EditText)textEntryView.findViewById(R.id.editTextIO_Group2);
@@ -441,7 +441,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
 			editGPIONum3.setText("2");
 			editGPIONum4.setText("3");
 		}
-		builder.setPositiveButton("È·¶¨",
+		builder.setPositiveButton("ç¡®å®š",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						pin_group1=editGPIOGroup1.getText().toString();
@@ -454,7 +454,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
 						pin_num4=Integer.parseInt(editGPIONum4.getText().toString());
 					}
 				});
-		builder.setNegativeButton("È¡Ïû",
+		builder.setNegativeButton("å–æ¶ˆ",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 					}
@@ -462,7 +462,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
 		return builder.create();
 	}
     //--------------------------------------------------------------------
-    //LED¿ª¹Ø°´Å¥
+    //LEDå¼€å…³æŒ‰é’®
     class ToggleBtnOnClickListener implements View.OnClickListener{
 		public void onClick(View v)
 		{
@@ -502,7 +502,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
 		}
     }
     //--------------------------------------------------------------------
-    //ÉèÖÃLED×´Ì¬
+    //è®¾ç½®LEDçŠ¶æ€
     private int WriteLed(int led,int pin_val)
 	{
     	int ret=-1;
@@ -533,7 +533,7 @@ public class OscilloscopeActivity extends Activity implements Callback {
 		return ret;
 	}
     //--------------------------------------------------------------------
-    //ÏÔÊ¾´íÎóĞÅÏ¢
+    //æ˜¾ç¤ºé”™è¯¯ä¿¡æ¯
     private void ShowErrMessage(int ret,String cmd)
 	{
 		if (ret==-1)

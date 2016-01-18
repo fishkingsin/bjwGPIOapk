@@ -12,7 +12,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GPIO引脚:"
+            android:text="GPIO寮曡剼:"
             android:textSize="20sp" />
 
         <EditText
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="20dip"
-            android:text="值"
+            android:text="鍊�"
             android:textSize="20sp" />
 
         <RadioGroup
@@ -89,7 +89,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="功能" />
+            android:text="鍔熻兘" />
 
         <RadioButton
             android:id="@+id/radiocfg0"
@@ -236,7 +236,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="上拉" />
+                android:text="涓婃媺" />
 
             <RadioButton
                 android:id="@+id/radiopull0"
@@ -281,14 +281,14 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="串口调试信息控制" />
+            android:text="涓插彛璋冭瘯淇℃伅鎺у埗" />
 
         <CheckBox
             android:id="@+id/checkBox_dbg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="dgb状态" />
+            android:text="dgb鐘舵��" />
 
         <Button
             android:id="@+id/btnGetdbg"

@@ -9,9 +9,9 @@ import android.widget.RadioButton;
 
 /**
  * @author mywork
- * ÓÃÀ´²âÊÔ¶ÁÈ¡ĞÔÄÜ
- * ¼ÆËãÒ»´Î¶ÁÈ¡ĞèÒª¶àÉÙÊ±¼ä£¬×÷ÎªÂÖÑ¯¼ä¸ôÊ±¼äÉèÖÃµÄ²Î¿¼£»
- * ¶ÁÈ¡µÄÊ±¼ä°üÀ¨ÁËjavaµÄJNIµ÷ÓÃËù»¨·ÑµÄÊ±¼ä£¬ÆäÊµJNIµ÷ÓÃÍ¦·ÑÊ±µÄ£»
+ * ç”¨æ¥æµ‹è¯•è¯»å–æ€§èƒ½
+ * è®¡ç®—ä¸€æ¬¡è¯»å–éœ€è¦å¤šå°‘æ—¶é—´ï¼Œä½œä¸ºè½®è¯¢é—´éš”æ—¶é—´è®¾ç½®çš„å‚è€ƒï¼›
+ * è¯»å–çš„æ—¶é—´åŒ…æ‹¬äº†javaçš„JNIè°ƒç”¨æ‰€èŠ±è´¹çš„æ—¶é—´ï¼Œå…¶å®JNIè°ƒç”¨æŒºè´¹æ—¶çš„ï¼›
  */
 public class TestActivity extends Activity {
 	Button btnTestBack,btnStart;
@@ -29,7 +29,7 @@ public class TestActivity extends Activity {
         editTestInfo=(EditText)findViewById(R.id.editTestInfo);
         radioBoard6410=(RadioButton)findViewById(R.id.radioBoard6410);
         radioBoard210=(RadioButton)findViewById(R.id.radioBoard210);
-        editTestInfo.setText("¶ÔLED1~4£¬Í¨¹ıJNI¶ÁÈ¡10Íò´Î£¬¼ÆËãÆ½¾ùºÄÊ±:\n");
+        editTestInfo.setText("å¯¹LED1~4ï¼Œé€šè¿‡JNIè¯»å–10ä¸‡æ¬¡ï¼Œè®¡ç®—å¹³å‡è€—æ—¶:\n");
         if (android.os.Build.BOARD.contains("6410")) {
         	radioBoard6410.setChecked(true);
 		} else if (android.os.Build.BOARD.contains("210"))
@@ -43,7 +43,7 @@ public class TestActivity extends Activity {
 		{
 			if (v==btnStart){
 				String sInfo=editTestInfo.getText().toString();
-				int mLoopCount = 100000;//Ñ­»·10Íò´Î
+				int mLoopCount = 100000;//å¾ªç¯10ä¸‡æ¬¡
 				
 				String sLED;
 				int[] LEDn=new int[4];
@@ -60,7 +60,7 @@ public class TestActivity extends Activity {
 					LEDn[0]=2;
 					LEDn[0]=3;
 				}
-				/* ¾«È·¶ÈÎªÄÉÃë¼¶ */
+				/* ç²¾ç¡®åº¦ä¸ºçº³ç§’çº§ */
 				long startTime = System.nanoTime();
 				for(int i = 0;i <= mLoopCount; ++ i)
 				{
@@ -71,11 +71,11 @@ public class TestActivity extends Activity {
 				}
 				long endTime = System.nanoTime();
 				double usetime=(endTime-startTime)/1000000;
-				sInfo+="Ò»¹²ºÄÊ±:"+String.valueOf(usetime)+"ms\n";
+				sInfo+="ä¸€å…±è€—æ—¶:"+String.valueOf(usetime)+"ms\n";
 				editTestInfo.setText(sInfo);
 				usetime=usetime/mLoopCount;
 				String timeStr_ms = String.valueOf(usetime);
-				sInfo+="Ã¿´Î¶ÁÈ¡ºÄÊ±:"+timeStr_ms+"ms\n";
+				sInfo+="æ¯æ¬¡è¯»å–è€—æ—¶:"+timeStr_ms+"ms\n";
 				editTestInfo.setText(sInfo);
 			}
 			else if (v==btnTestBack) {

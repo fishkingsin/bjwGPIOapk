@@ -11,8 +11,8 @@ import android.widget.ToggleButton;
 
 /**
  * @author mywork
- * ¿ØÖÆ4¸öLED
- * Í¨¹ıÏß³Ì¿ÉÒÔÊµÏÖÑ­»·ÁÁÃğ
+ * æ§åˆ¶4ä¸ªLED
+ * é€šè¿‡çº¿ç¨‹å¯ä»¥å®ç°å¾ªç¯äº®ç­
  */
 public class LedActivity extends Activity {
 	Button btnReadLeds,btnLedBack;
@@ -95,7 +95,7 @@ public class LedActivity extends Activity {
 		}
     }
     //--------------------------------------------------------------------
-    //ÏÔÊ¾´íÎóĞÅÏ¢
+    //æ˜¾ç¤ºé”™è¯¯ä¿¡æ¯
     private void ShowErrMessage(int ret,String cmd)
 	{
 		if (ret==-1)
@@ -111,7 +111,7 @@ public class LedActivity extends Activity {
 			Toast.makeText(LedActivity.this, sMsg, Toast.LENGTH_SHORT).show();
 	}
 	//--------------------------------------------------------------------
-	//CPUÑ¡Ôñ
+	//CPUé€‰æ‹©
     class radioClickListener implements View.OnClickListener{
 		public void onClick(View v)
 		{
@@ -162,7 +162,7 @@ public class LedActivity extends Activity {
 		}
     }
 	//--------------------------------------------------------------------
-    //¶ÁÈ¡LED×´Ì¬£¬ÉèÖÃToggleButton°´Å¥×´Ì¬
+    //è¯»å–LEDçŠ¶æ€ï¼Œè®¾ç½®ToggleButtonæŒ‰é’®çŠ¶æ€
     private int ReadLed(int led)
 	{
     	int ret=-1;
@@ -193,7 +193,7 @@ public class LedActivity extends Activity {
 		return ret;
 	}
     //--------------------------------------------------------------------
-    //ÉèÖÃLED×´Ì¬
+    //è®¾ç½®LEDçŠ¶æ€
     private void SetLedState(int led,int ret)
    	{
        	switch (led)
@@ -243,7 +243,7 @@ public class LedActivity extends Activity {
    		}
    	}
     //--------------------------------------------------------------------
-    //¶ÁÈ¡led×´Ì¬°´Å¥,·µ»Ø°´Å¥
+    //è¯»å–ledçŠ¶æ€æŒ‰é’®,è¿”å›æŒ‰é’®
     class btnClickListener implements View.OnClickListener{
     	String pin_group;
     	int pin_num;
@@ -262,7 +262,7 @@ public class LedActivity extends Activity {
 		}
     }
 	//--------------------------------------------------------------------
-    //ÉèÖÃLED×´Ì¬
+    //è®¾ç½®LEDçŠ¶æ€
     private int WriteLed(int led,int pin_val)
 	{
     	int ret=-1;
@@ -293,7 +293,7 @@ public class LedActivity extends Activity {
 		return ret;
 	}
     //--------------------------------------------------------------------
-    //LED¿ª¹Ø°´Å¥
+    //LEDå¼€å…³æŒ‰é’®
     class ToggleBtnOnClickListener implements View.OnClickListener{
 		public void onClick(View v)
 		{
@@ -333,9 +333,9 @@ public class LedActivity extends Activity {
 		}
     }
     //--------------------------------------------------------------------
-    //LEDÑ­»·ÁÁÃğÏß³Ì
+    //LEDå¾ªç¯äº®ç­çº¿ç¨‹
     class LedAllThread extends Thread{
-    	public boolean suspendFlag = true;// ¿ØÖÆÏß³ÌµÄÖ´ĞĞ
+    	public boolean suspendFlag = true;// æ§åˆ¶çº¿ç¨‹çš„æ‰§è¡Œ
     	@Override
 		public void run() {
 			super.run();
@@ -353,52 +353,52 @@ public class LedActivity extends Activity {
 						}
 					}
 				}
-				WriteLed(1,0);//LED1ÁÁ
+				WriteLed(1,0);//LED1äº®
 	        	try{
-	        		Thread.sleep(200);//ÑÓÊ±200ms
+	        		Thread.sleep(200);//å»¶æ—¶200ms
 				} catch (Exception e){
 					e.printStackTrace();
 				}
-	        	WriteLed(1,1);//LED1Ãğ
-				WriteLed(2,0);//LED2ÁÁ
+	        	WriteLed(1,1);//LED1ç­
+				WriteLed(2,0);//LED2äº®
 				try{
-	        		Thread.sleep(200);//ÑÓÊ±200ms
+	        		Thread.sleep(200);//å»¶æ—¶200ms
 				} catch (Exception e){
 					e.printStackTrace();
 				}
-				WriteLed(2,1);//LED2Ãğ
-				WriteLed(3,0);//LED3ÁÁ
+				WriteLed(2,1);//LED2ç­
+				WriteLed(3,0);//LED3äº®
 				try{
-	        		Thread.sleep(200);//ÑÓÊ±200ms
+	        		Thread.sleep(200);//å»¶æ—¶200ms
 				} catch (Exception e){
 					e.printStackTrace();
 				}
-				WriteLed(3,1);//LED3Ãğ
-				WriteLed(4,0);//LED4ÁÁ
+				WriteLed(3,1);//LED3ç­
+				WriteLed(4,0);//LED4äº®
 				try{
-	        		Thread.sleep(200);//ÑÓÊ±200ms
+	        		Thread.sleep(200);//å»¶æ—¶200ms
 				} catch (Exception e){
 					e.printStackTrace();
 				}
-				WriteLed(4,1);//LED4Ãğ
+				WriteLed(4,1);//LED4ç­
 			}
 		}
     	
-    	//Ïß³ÌÔİÍ£
+    	//çº¿ç¨‹æš‚åœ
 		public void setSuspendFlag() {
 			this.suspendFlag = true;
 		}
 		
-		//»½ĞÑÏß³Ì
+		//å”¤é†’çº¿ç¨‹
 		public synchronized void setResume() {
 			this.suspendFlag = false;
 			notify();
 		}
     }
     //--------------------------------------------------------------------
-    //LED(n)Ñ­»·ÁÁÃğÏß³Ì
+    //LED(n)å¾ªç¯äº®ç­çº¿ç¨‹
     class LednThread extends Thread{
-    	public boolean suspendFlag = true;// ¿ØÖÆÏß³ÌµÄÖ´ĞĞ
+    	public boolean suspendFlag = true;// æ§åˆ¶çº¿ç¨‹çš„æ‰§è¡Œ
     	private int ledn=1;
     	@Override
 		public void run() {
@@ -417,27 +417,27 @@ public class LedActivity extends Activity {
 						}
 					}
 				}
-				WriteLed(ledn,0);//LED(n)ÁÁ
+				WriteLed(ledn,0);//LED(n)äº®
 	        	try{
-	        		Thread.sleep(200);//ÑÓÊ±200ms
+	        		Thread.sleep(200);//å»¶æ—¶200ms
 				} catch (Exception e){
 					e.printStackTrace();
 				}
-	        	WriteLed(ledn,1);//LED(n)Ãğ
+	        	WriteLed(ledn,1);//LED(n)ç­
 	        	try{
-	        		Thread.sleep(200);//ÑÓÊ±200ms
+	        		Thread.sleep(200);//å»¶æ—¶200ms
 				} catch (Exception e){
 					e.printStackTrace();
 				}
 			}
 		}
     	
-    	//Ïß³ÌÔİÍ£
+    	//çº¿ç¨‹æš‚åœ
 		public void setSuspendFlag() {
 			this.suspendFlag = true;
 		}
 		
-		//»½ĞÑÏß³Ì
+		//å”¤é†’çº¿ç¨‹
 		public synchronized void setResume() {
 			this.suspendFlag = false;
 			notify();

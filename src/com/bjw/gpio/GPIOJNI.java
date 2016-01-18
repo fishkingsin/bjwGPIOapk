@@ -8,8 +8,8 @@ public class GPIOJNI {
 	static {
 		System.loadLibrary("bjwgpio");
 		}
-	public static String cmdErr=":ÃüÁîÖ´ĞĞ´íÎó£¬ÊÇ·ñGPIOÒı½ÅÃû³ÆÊäÈë´íÎó?";
-	public static String fdErr=":Éè±¸´ò¿ª´íÎó£¬Çë¼ì²éÊÇ·ñÓĞ¶ÁĞ´È¨ÏŞ¡¢ÄÚºËÏà¹ØÇı¶¯ÊÇ·ñÕıÈ·!";
+	public static String cmdErr=":å‘½ä»¤æ‰§è¡Œé”™è¯¯ï¼Œæ˜¯å¦GPIOå¼•è„šåç§°è¾“å…¥é”™è¯¯?";
+	public static String fdErr=":è®¾å¤‡æ‰“å¼€é”™è¯¯ï¼Œè¯·æ£€æŸ¥æ˜¯å¦æœ‰è¯»å†™æƒé™ã€å†…æ ¸ç›¸å…³é©±åŠ¨æ˜¯å¦æ­£ç¡®!";
 	
 	public native static int ReadGPIO(String pin_group,int pin_num);
 	public native static int WriteGPIO(String pin_group,int pin_num,int pin_val);

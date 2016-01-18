@@ -8,8 +8,8 @@ public class GPIOJNI {
 	static {
 		System.loadLibrary("bjwgpio");
 		}
-	public static String cmdErr=":命令执行错误，是否GPIO引脚名称输入错误?";
-	public static String fdErr=":设备打开错误，请检查是否有读写权限、内核相关驱动是否正确!";
+	public static String cmdErr=": Command execution error, whether GPIO pin name input error?";
+	public static String fdErr=": Device open error, check whether there is read and write permissions , kernel-related drive correctly !";
 	
 	public native static int ReadGPIO(String pin_group,int pin_num);
 	public native static int WriteGPIO(String pin_group,int pin_num,int pin_val);

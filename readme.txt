@@ -1,6 +1,6 @@
-¸ü¶àÏêÇéÇë²é¿´£ºhttp://www.arm9home.net/read.php?tid-27259.html
+æ›´å¤šè¯¦æƒ…è¯·æŸ¥çœ‹ï¼šhttp://www.arm9home.net/read.php?tid-27259.html
 
-1¡¢eclipse with adtºÍandroid sdk£¬»òÕßgoogle¹Ù·½ÕûºÏ°æµÄeclipse
-2¡¢ADT°æ±¾¡İ21
-3¡¢Android SDK Tools°æ±¾¡İ21
-4¡¢jdk6»òÒÔÉÏ
+1ã€eclipse with adtå’Œandroid sdkï¼Œæˆ–è€…googleå®˜æ–¹æ•´åˆç‰ˆçš„eclipse
+2ã€ADTç‰ˆæœ¬â‰¥21
+3ã€Android SDK Toolsç‰ˆæœ¬â‰¥21
+4ã€jdk6æˆ–ä»¥ä¸Š

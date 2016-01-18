@@ -10,12 +10,12 @@
 #include <jni.h>
 #include <assert.h>
 
-//µ¼ÈëÈÕÖ¾Í·ÎÄ¼ş
+//å¯¼å…¥æ—¥å¿—å¤´æ–‡ä»¶
 #include <android/log.h>
-//ĞŞ¸ÄÈÕÖ¾tagÖĞµÄÖµ
+//ä¿®æ”¹æ—¥å¿—tagä¸­çš„å€¼
 #define LOG_TAG "bjwgpio"
-//ÈÕÖ¾ÏÔÊ¾
-//#define DEBUG È¥µô×¢ÊÍÖØĞÂ±àÒë£¬¿ÉÏÔÊ¾logcatĞÅÏ¢
+//æ—¥å¿—æ˜¾ç¤º
+//#define DEBUG å»æ‰æ³¨é‡Šé‡æ–°ç¼–è¯‘ï¼Œå¯æ˜¾ç¤ºlogcatä¿¡æ¯
 #ifdef DEBUG
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)

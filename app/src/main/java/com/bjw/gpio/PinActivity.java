@@ -17,11 +17,11 @@ import android.widget.Toast;
 
 /**
  * @author mywork
- * µ¥¸öGPIO¿ÚµÄ¿ØÖÆ
- * ¿ÉÒÔÉèÖÃGPIO¸ßµçÆ½»òµÍµçÆ½£¬¿ÉÒÔ²éÑ¯IO¿ÚµçÆ½£»
- * ¿ÉÒÔÅäÖÃIO¿Ú×÷ÓÃ£¬¿ÉÒÔ²éÑ¯IOÅäÖÃ£»
- * ¿ÉÒÔÅäÖÃIO¿ÚÉÏÀ­×´Ì¬£¬¿ÉÒÔ²éÑ¯IO¿ÚÉÏÀ­×´Ì¬£»
- * ¿ÉÒÔ´ò¿ª»ò¹Ø±Õ´®¿ÚÊä³öµÄµ÷ÊÔĞÅÏ¢£¬Ò²¿ÉÒÔ²éÑ¯µ±Ç°ÉèÖÃÊÇ·ñÊä³öµ÷ÊÔĞÅÏ¢£»
+ * å•ä¸ªGPIOå£çš„æ§åˆ¶
+ * å¯ä»¥è®¾ç½®GPIOé«˜ç”µå¹³æˆ–ä½ç”µå¹³ï¼Œå¯ä»¥æŸ¥è¯¢IOå£ç”µå¹³ï¼›
+ * å¯ä»¥é…ç½®IOå£ä½œç”¨ï¼Œå¯ä»¥æŸ¥è¯¢IOé…ç½®ï¼›
+ * å¯ä»¥é…ç½®IOå£ä¸Šæ‹‰çŠ¶æ€ï¼Œå¯ä»¥æŸ¥è¯¢IOå£ä¸Šæ‹‰çŠ¶æ€ï¼›
+ * å¯ä»¥æ‰“å¼€æˆ–å…³é—­ä¸²å£è¾“å‡ºçš„è°ƒè¯•ä¿¡æ¯ï¼Œä¹Ÿå¯ä»¥æŸ¥è¯¢å½“å‰è®¾ç½®æ˜¯å¦è¾“å‡ºè°ƒè¯•ä¿¡æ¯ï¼›
  */
 public class PinActivity extends Activity {
 	Button btnRead,btnWrite,btnGetdbg,btnEnabledbg,btnDisabledbg,btnGetcfgpin,btnSetcfgpin,btnGetPull,btnSetPull;
@@ -110,7 +110,7 @@ public class PinActivity extends Activity {
         btnBack.setOnClickListener(new btnOnClickListener());
         radioValue0=(RadioButton)findViewById(R.id.radioValue0);
         radioValue1=(RadioButton)findViewById(R.id.radioValue1);
-        //GPIO¶Ë¿ÚÉèÖÃ
+        //GPIOç«¯å£è®¾ç½®
         if (android.os.Build.BOARD.contains("6410")) {
         	editGroup.setText("GPK");
         	editNum.setText("4");

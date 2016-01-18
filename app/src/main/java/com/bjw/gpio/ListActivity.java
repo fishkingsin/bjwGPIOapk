@@ -30,8 +30,8 @@ import android.widget.Toast;
 
 /**
  * @author mywork
- * ÁĞ³öËùÓĞGPIO¿Ú¼°ÆäÅäÖÃ×´Ì¬
- * ¿ÉÒÔÒÔCSV¸ñÊ½µ¼³öËùÓĞĞÅÏ¢µ½´æ´¢¿¨
+ * åˆ—å‡ºæ‰€æœ‰GPIOå£åŠå…¶é…ç½®çŠ¶æ€
+ * å¯ä»¥ä»¥CSVæ ¼å¼å¯¼å‡ºæ‰€æœ‰ä¿¡æ¯åˆ°å­˜å‚¨å¡
  */
 public class ListActivity extends Activity {
 	private static final int DIALOGSAVETF = 1;
@@ -111,7 +111,7 @@ public class ListActivity extends Activity {
 		}
     }
     //---------------------------------------------------------------
-    //°´Å¥ÊÂ¼ş
+    //æŒ‰é’®äº‹ä»¶
     class btnClickListener implements View.OnClickListener{
 		public void onClick(View v)
 		{
@@ -122,7 +122,7 @@ public class ListActivity extends Activity {
 				String status=Environment.getExternalStorageState();
 				if(!status.equals(Environment.MEDIA_MOUNTED))
 				{
-					ShowMessage("Çë²åÈëTF¿¨");
+					ShowMessage("è¯·æ’å…¥TFå¡");
 					return;
 				}
 				showDialog(DIALOGSAVETF);
@@ -137,7 +137,7 @@ public class ListActivity extends Activity {
 			Toast.makeText(ListActivity.this, sMsg, Toast.LENGTH_SHORT).show();
 	}
     //---------------------------------------------------------------
-    //»ñÈ¡ËùÓĞÒı½ÅĞÅÏ¢
+    //è·å–æ‰€æœ‰å¼•è„šä¿¡æ¯
     private ArrayList<ListBean> GetGpioList()
 	{
     	ArrayList<ListBean> mList = new ArrayList<ListBean>();
@@ -162,7 +162,7 @@ public class ListActivity extends Activity {
 		return mList;
 	}
     //---------------------------------------------------------------
-    //»ñÈ¡Ö¸¶¨Òı½ÅĞÅÏ¢
+    //è·å–æŒ‡å®šå¼•è„šä¿¡æ¯
     private ListBean GetPinInfo(String gpio_group,int pin_num)
 	{
     	ListBean listBean=new ListBean();
@@ -194,7 +194,7 @@ public class ListActivity extends Activity {
     	return listBean;
 	}
     //---------------------------------------------------------------
-    //Ë¢ĞÂÁĞ±í
+    //åˆ·æ–°åˆ—è¡¨
     private void RefreshList(){
     	GpioList=GetGpioList();
 		mAdapter.notifyDataSetChanged();
@@ -251,18 +251,18 @@ public class ListActivity extends Activity {
 			holder.txtPull.setText(listBean.pull);
 			if (listBean.value!=null)
 			{
-				if (listBean.value.equals("-1")||listBean.value.equals("-2"))//·¢Éú´íÎóµÄĞĞ£¬ÓÃºìÉ«±êÊ¾
+				if (listBean.value.equals("-1")||listBean.value.equals("-2"))//å‘ç”Ÿé”™è¯¯çš„è¡Œï¼Œç”¨çº¢è‰²æ ‡ç¤º
 				{
 					holder.txtGPIO.setTextColor(Color.RED);
 					holder.txtValue.setTextColor(Color.RED);
 					holder.txtCfgpin.setTextColor(Color.RED);
 					holder.txtPull.setTextColor(Color.RED);
-				}else if (listBean.value.equals("0")) {//Òı½ÅµÍµçÆ½µÄĞĞ£¬ÓÃÂÌÉ«±êÊ¾
+				}else if (listBean.value.equals("0")) {//å¼•è„šä½ç”µå¹³çš„è¡Œï¼Œç”¨ç»¿è‰²æ ‡ç¤º
 					holder.txtGPIO.setTextColor(Color.GREEN);
 					holder.txtValue.setTextColor(Color.GREEN);
 					holder.txtCfgpin.setTextColor(Color.GREEN);
 					holder.txtPull.setTextColor(Color.GREEN);
-				}else if (listBean.value.equals("1")) {//Òı½Å¸ßµçÆ½µÄĞĞ£¬ÓÃÀ¶É«±êÊ¾
+				}else if (listBean.value.equals("1")) {//å¼•è„šé«˜ç”µå¹³çš„è¡Œï¼Œç”¨è“è‰²æ ‡ç¤º
 					holder.txtGPIO.setTextColor(Color.BLUE);
 					holder.txtValue.setTextColor(Color.BLUE);
 					holder.txtCfgpin.setTextColor(Color.BLUE);
@@ -273,7 +273,7 @@ public class ListActivity extends Activity {
 		}
     }
     //---------------------------------------------------------------
-    //¶Ô»°¿ò
+    //å¯¹è¯æ¡†
     @Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
@@ -283,26 +283,26 @@ public class ListActivity extends Activity {
 		return null;
 	}
     //---------------------------------------------------------------
-    //±£´æÎÄ¼ş¶Ô»°¿ò
+    //ä¿å­˜æ–‡ä»¶å¯¹è¯æ¡†
     private Dialog buildDialogSaveSD(Context context) {
 		LayoutInflater inflater = LayoutInflater.from(this);
 		final View textEntryView = inflater.inflate(
 				R.layout.input_savefilename, null);
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setIcon(R.drawable.alert_dialog_icon);
-		builder.setTitle("ÇëÊäÈëÒª±£´æµÄÎÄ¼şÃû(ÎÄ¼ş±£´æÖÁTF»òSD¿¨¸ùÄ¿Â¼)");
+		builder.setTitle("è¯·è¾“å…¥è¦ä¿å­˜çš„æ–‡ä»¶å(æ–‡ä»¶ä¿å­˜è‡³TFæˆ–SDå¡æ ¹ç›®å½•)");
 		builder.setView(textEntryView);
 		final EditText fileName = (EditText)textEntryView.findViewById(R.id.filename_edit);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyMMddHHmmss");      
-		Date curDate = new Date(System.currentTimeMillis());//»ñÈ¡µ±Ç°Ê±¼ä
+		Date curDate = new Date(System.currentTimeMillis());//è·å–å½“å‰æ—¶é—´
 		fileName.setText(formatter.format(curDate)+".csv");
-		builder.setPositiveButton("È·¶¨",
+		builder.setPositiveButton("ç¡®å®š",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 				        SaveFile("/mnt/sdcard/"+fileName.getText().toString());
 					}
 				});
-		builder.setNegativeButton("È¡Ïû",
+		builder.setNegativeButton("å–æ¶ˆ",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 					}
@@ -310,7 +310,7 @@ public class ListActivity extends Activity {
 		return builder.create();
 	}
     //---------------------------------------------------------------
-    //±£´æÎÄ¼ş¹ı³Ì
+    //ä¿å­˜æ–‡ä»¶è¿‡ç¨‹
     private void SaveFile(String Filename)
 	{
 		File file = new File(Filename);
@@ -335,19 +335,19 @@ public class ListActivity extends Activity {
 				fos.write(sLine.getBytes("GB2312"));
 			}
 			fos.close();
-	        ShowMessage("¹²" + GpioList.size() +"ÌõĞÅÏ¢±£´æ³É¹¦");
+	        ShowMessage("å…±" + GpioList.size() +"æ¡ä¿¡æ¯ä¿å­˜æˆåŠŸ");
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
-			ShowMessage("±£´æÊ§°Ü:"+e.getMessage());
+			ShowMessage("ä¿å­˜å¤±è´¥:"+e.getMessage());
 		} catch (IOException e1)
 		{
 			e1.printStackTrace();
-			ShowMessage("±£´æÊ§°Ü:"+e1.getMessage());
+			ShowMessage("ä¿å­˜å¤±è´¥:"+e1.getMessage());
 		}
 	}
     //---------------------------------------------------------------
-    //checkboxÊÂ¼ş
+    //checkboxäº‹ä»¶
     class checkboxClickListener implements CheckBox.OnCheckedChangeListener{
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
 		{
@@ -364,9 +364,9 @@ public class ListActivity extends Activity {
 		}
     }
     //---------------------------------------------------------------
-    //×Ô¶¯Ë¢ĞÂÏß³Ì
+    //è‡ªåŠ¨åˆ·æ–°çº¿ç¨‹
     class AutoRefresh extends Thread{
-    	public boolean suspendFlag = true;// ¿ØÖÆÏß³ÌµÄÖ´ĞĞ
+    	public boolean suspendFlag = true;// æ§åˆ¶çº¿ç¨‹çš„æ‰§è¡Œ
     	@Override
 		public void run() {
 			super.run();
@@ -393,7 +393,7 @@ public class ListActivity extends Activity {
 				});
 	        	try
 				{
-	        		Thread.sleep(1000);//Ë¢ĞÂÑÓÊ±1Ãë
+	        		Thread.sleep(1000);//åˆ·æ–°å»¶æ—¶1ç§’
 				} catch (Exception e)
 				{
 					e.printStackTrace();
@@ -401,12 +401,12 @@ public class ListActivity extends Activity {
 			}
 		}
     	
-    	//Ïß³ÌÔİÍ£
+    	//çº¿ç¨‹æš‚åœ
 		public void setSuspendFlag() {
 			this.suspendFlag = true;
 		}
 		
-		//»½ĞÑÏß³Ì
+		//å”¤é†’çº¿ç¨‹
 		public synchronized void setResume() {
 			this.suspendFlag = false;
 			notify();
